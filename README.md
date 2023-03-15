@@ -73,3 +73,13 @@ docker run --name card-validator -p 4999:4999 -d card-validator
 # e.g. localhost:4999/validate/luhn/499 27 398 716
 # e.g. localhost:4999/validate/luhn/4 99     27 398 716
 ```
+
+## Running Example Requests
+
+```bash
+cd ${PROJECT_BASE_DIRECTORY}
+cd api-examples
+```
+
+Now that you are in the payload examples folder, please import this into Postman as a separate collection (v2.1+)
+

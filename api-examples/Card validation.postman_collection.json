@@ -1,0 +1,319 @@
+{
+	"info": {
+		"_postman_id": "458c23f7-b45f-4cd2-8656-00e3ddb29db4",
+		"name": "Card validation",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Validate payload successfully using Luhn with integer value for card number",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"card-number\": 49927398716\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:{{PORT_NUMBER}}/validate/luhn",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "{{PORT_NUMBER}}",
+					"path": [
+						"validate",
+						"luhn"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate payload successfully using Luhn with string value for card number",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"card-number\": \"49927398716\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:{{PORT_NUMBER}}/validate/luhn",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "{{PORT_NUMBER}}",
+					"path": [
+						"validate",
+						"luhn"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Return Content Type not supported error message for non JSON request body",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"card-number\": 49927398716\n}",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:{{PORT_NUMBER}}/validate/luhn",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "{{PORT_NUMBER}}",
+					"path": [
+						"validate",
+						"luhn"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Return error message for empty JSON request body",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:{{PORT_NUMBER}}/validate/luhn",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "{{PORT_NUMBER}}",
+					"path": [
+						"validate",
+						"luhn"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Return error message for missing required fields",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"test-field\": 1000\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:{{PORT_NUMBER}}/validate/luhn",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "{{PORT_NUMBER}}",
+					"path": [
+						"validate",
+						"luhn"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Should return false for invalid card number with extra characters",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:{{PORT_NUMBER}}/validate/luhn/123 a .. c",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "{{PORT_NUMBER}}",
+					"path": [
+						"validate",
+						"luhn",
+						"123 a .. c"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Should return false for invalid card number",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:{{PORT_NUMBER}}/validate/luhn/123",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "{{PORT_NUMBER}}",
+					"path": [
+						"validate",
+						"luhn",
+						"123"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Should return true for a valid card number",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:{{PORT_NUMBER}}/validate/luhn/49927398716",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "{{PORT_NUMBER}}",
+					"path": [
+						"validate",
+						"luhn",
+						"49927398716"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Should return true for a valid card number with extra spaces",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:{{PORT_NUMBER}}/validate/luhn/499 27 39 8 7 16  ",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "{{PORT_NUMBER}}",
+					"path": [
+						"validate",
+						"luhn",
+						"499 27 39 8 7 16  "
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "PORT_NUMBER",
+			"value": "4999"
+		}
+	]
+}

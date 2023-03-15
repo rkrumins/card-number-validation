@@ -46,11 +46,22 @@ def mask_credit_card_digits(full_credit_card_number, unmasked_digits_count=2, ma
 
     full_credit_card_number_length = len(full_credit_card_number_clean)
 
+    if full_credit_card_number_length < 15:
+        # Given that AMEX number count is minimum 15 and for VISA/Mastercard it is 16
+        LOGGER.warning("Card number length is less the standard, expected, count")
+    elif unmasked_digits_count > 4:
+        LOGGER.warning("Unmasked card numbers count should not be more than 4 by default")
+        # Unmasked digits count should be set to default figure, e.g. 4 for standard car numbers, thus enforced
+        # unmasked_digits_count = 4
+
     if full_credit_card_number_length <= unmasked_digits_count:
+        LOGGER.debug("Returning full masked card number")
         return mask_character * full_credit_card_number_length
 
     masked_digits_count = full_credit_card_number_length - unmasked_digits_count
     mask_substring = mask_character * masked_digits_count
     unmasked_characters_range = full_credit_card_number_length - unmasked_digits_count
 
-    return "{}{}".format(mask_substring, full_credit_card_number_clean[unmasked_characters_range:full_credit_card_number_length])
+    masked_card_number = "{}{}".format(mask_substring, full_credit_card_number_clean[unmasked_characters_range:full_credit_card_number_length])
+    LOGGER.info("Masked card number is: {}".format(masked_card_number))
+    return masked_card_number

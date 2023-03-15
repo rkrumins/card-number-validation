@@ -65,3 +65,10 @@ def test_should_return_only_mask_characters_if_card_number_is_shorter_than_unmas
     expected_masked_card_number = "****************"
     actual_masked_card_number = object_under_test.mask_credit_card_digits(input_card_number, 0)
     assert actual_masked_card_number == expected_masked_card_number
+
+
+def test_should_return_fully_masked_card_number_when_unmasked_digits_count_is_more_than_masked():
+    input_card_number = "1234"
+    expected_masked_card_number = "****"
+    actual_masked_card_number = object_under_test.mask_credit_card_digits(input_card_number, 4)
+    assert actual_masked_card_number == expected_masked_card_number
