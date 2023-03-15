@@ -34,6 +34,10 @@ export FLASK_DEBUG=1
 export PYTHONPATH="${PYTHONPATH}:$(pwd)"
 # Start the webserver
 flask run --host=0.0.0.0 --port 4999
+# This service can be accessed at localhost:4999/validate/luhn/${INPUT_CARD_NUMBER_PAYLOAD}
+# e.g. localhost:4999/validate/luhn/49927398716
+# e.g. localhost:4999/validate/luhn/499 27 398 716
+# e.g. localhost:4999/validate/luhn/4 99     27 398 716
 ```
 
 ## Running unit tests
@@ -57,3 +61,15 @@ cd htmlcov
 # After this proceed to open the index.html file
 ```
 
+## Deploying as a Docker container
+
+```bash
+cd ${PROJECT_BASE_DIRECTORY}
+docker build --tag card-validator .
+docker run --name card-validator -p 4999:4999 -d card-validator
+# Now this will spin up a Web service running on port 4999
+# This service can be accessed at localhost:4999/validate/luhn/${INPUT_CARD_NUMBER_PAYLOAD}
+# e.g. localhost:4999/validate/luhn/49927398716
+# e.g. localhost:4999/validate/luhn/499 27 398 716
+# e.g. localhost:4999/validate/luhn/4 99     27 398 716
+```
