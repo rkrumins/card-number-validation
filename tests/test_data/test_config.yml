@@ -1,0 +1,7 @@
+
+SUPPORTED_CARD_NUMBER_VALIDATORS:
+  - "Luhn"
+
+#Mask property definitions
+MASK_CHARACTER: "*"
+MASK_UNMASKED_DIGITS_COUNT: 4
