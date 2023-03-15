@@ -4,6 +4,7 @@ from credit_card_validator.utils import validation_utils
 
 LOGGER = logging.getLogger(__name__)
 
+
 class LuhnValidator(CardNumberValidator):
 
     def __init__(self):

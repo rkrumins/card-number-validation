@@ -5,22 +5,22 @@ LOGGING_CONFIG = {
         "credit_card_validator": {
             "level": "DEBUG",
             "handlers": ["console_handler", "file_handler"],
-            "propogate": False
+            "propagate": False
         },
-        "": {
-            "level": "DEBUG",
-            "handlers": ["console_handler", "file_handler"],
-            "propogate": False
-        },
-        "flask": {
-            "level": "INFO",
-            "handlers": ["console_handler", "file_handler"],
-            "propogate": False
-        },
+        # "": {
+        #     "level": "DEBUG",
+        #     "handlers": ["console_handler", "file_handler"],
+        #     "propogate": False
+        # },
+        # "flask": {
+        #     "level": "INFO",
+        #     "handlers": ["console_handler", "file_handler"],
+        #     "propogate": False
+        # },
         # this logger will write logs into file
         "debug": {
             "level": "INFO",
-            "handlers": ["console_handler", "file_handler"],
+            "handlers": ["file_handler"],
             "propagate": False,
         },
     },

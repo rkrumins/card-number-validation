@@ -7,9 +7,11 @@ from credit_card_validator.constants import ConfigKeyConstants, DEFAULT_CARD_NUM
 from logging_config import LOGGING_CONFIG
 from logging.config import dictConfig
 import json
-dictConfig(LOGGING_CONFIG)
+from flask.logging import default_handler
 
+dictConfig(LOGGING_CONFIG)
 app = Flask(__name__)
+
 app_config = config_utils.load_config_from_local_filesystem("config/app_dev.yml")
 logging.info("Application config is set to the following: {}".format(json.dumps(app_config)))
 
