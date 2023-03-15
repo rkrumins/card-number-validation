@@ -55,7 +55,8 @@ pytest
 To run unit tests, please run below steps:
 
 ```bash
-cd ${PROJECT_BASE_DIRECTORY}/tests
+cd ${PROJECT_BASE_DIRECTORY}
+coverage run -m pytest
 coverage html
 cd htmlcov
 # After this proceed to open the index.html file
