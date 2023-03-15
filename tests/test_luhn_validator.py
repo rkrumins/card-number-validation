@@ -81,3 +81,23 @@ def test_should_return_true_for_valid_input_string_with_multiple_spaces():
     ]
     actual_results_list = [object_under_test.validate(input_card_number_value) for input_card_number_value in input_card_number_values]
     assert all(actual_results_list) is True
+
+
+def test_should_return_true_for_very_large_integer_value():
+    input_card_number = 6117329787959456170402582648081144717220758665842882823134765328921559889572988914329210134966229215
+    actual_result_flag = object_under_test.validate(input_card_number)
+    expected_result_flag = True
+    assert actual_result_flag == expected_result_flag
+
+
+def test_should_return_true_for_very_large_string_value():
+    input_card_number = "6117329787959456170402582648081144717220758665842882823134765328921559889572988914329210134966229215"
+    actual_result_flag = object_under_test.validate(input_card_number)
+    expected_result_flag = True
+    assert actual_result_flag == expected_result_flag
+
+def test_should_return_false_for_very_large_integer_value_with_extra_invalid_characters():
+    input_card_number = "abc6117329787959456170402582648081144717220758665842882823134765328921559889572988914329210134966229215  /."
+    actual_result_flag = object_under_test.validate(input_card_number)
+    expected_result_flag = False
+    assert actual_result_flag == expected_result_flag

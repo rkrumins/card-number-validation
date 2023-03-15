@@ -1,8 +1,9 @@
 
-CARD_NUMBER_VALIDATION_ALGORITHM: "Luhn"
+#Validation algorithm properties
+CARD_NUMBER_VALIDATION_ALGORITHM: "Luhn 123"
 SUPPORTED_CARD_NUMBER_VALIDATION_ALGORITHMS:
   - "Luhn"
 
-#Mask property definitions
+# Mask property definitions
 MASK_CHARACTER: "*"
 MASK_UNMASKED_DIGITS_COUNT: 4

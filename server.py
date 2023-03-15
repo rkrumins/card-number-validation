@@ -28,5 +28,6 @@ def validate_credit_card(card_number):
     return jsonify({
         "card-number": card_number,
         "valid-card-number": flag,
-        "validation-method": "Luhn"
+        "validation-method": card_number_validator.get_name()
     })
+

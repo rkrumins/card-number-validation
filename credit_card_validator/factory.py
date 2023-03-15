@@ -14,9 +14,10 @@ def get_validator(validator=DEFAULT_CARD_NUMBER_VALIDATOR):
             LOGGER.info("Card numbers will be validated using Luhn algorithm")
             return LuhnValidator()
         else:
-            LOGGER.error("Unable to load the implementation of {} algorithm, will default to {}".format(validator, DEFAULT_CARD_NUMBER_VALIDATOR))
-            raise Exception("Unable to obtain the implementation of {} algorithm.".format(validator))
+            LOGGER.error("Unable to load the implementation of {0} algorithm, will default to {1}".format(validator, DEFAULT_CARD_NUMBER_VALIDATOR))
+            exception_message = "Unable to obtain the implementation of {0} algorithm".format(validator)
+            raise Exception(exception_message)
     except Exception as e:
-        logging.exception(e)
-        logging.error("Unable to load algorithm: {0}, defaulting to {1} algorithm".format(validator, DEFAULT_CARD_NUMBER_VALIDATOR))
+        LOGGER.exception(e)
+        LOGGER.error("Unable to load algorithm: {0}, defaulting to {1} algorithm".format(validator, DEFAULT_CARD_NUMBER_VALIDATOR))
         return LuhnValidator()

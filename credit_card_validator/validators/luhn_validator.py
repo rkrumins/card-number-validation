@@ -8,7 +8,11 @@ class LuhnValidator(CardNumberValidator):
 
     def __init__(self):
         super().__init__()
-    
+        self._name = "Luhn"
+
+    def get_name(self):
+        return self._name
+
     def validate(self, number) -> bool:
         try:
             parsed_credit_card_number = validation_utils.parse_input(number)
