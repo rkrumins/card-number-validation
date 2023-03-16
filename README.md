@@ -28,6 +28,9 @@ pip3 install -r requirements.txt
 cd ${PROJECT_BASE_DIRECTORY}
 # Ensure you have the virtual environment activated
 source env/bin/activate 
+# Ensure you validate the configuration
+vi config/app_dev.yml
+# Set environment variable for Flask
 export FLASK_APP=server.py
 # OPTIONAL: Enable debug mode
 export FLASK_DEBUG=1
