@@ -1,12 +1,12 @@
 from credit_card_validator.utils import validation_utils
 from credit_card_validator.validators.luhn_validator import LuhnValidator
-from credit_card_validator.constants import DEFAULT_CARD_NUMBER_VALIDATOR
+from credit_card_validator.constants import DefaultConstants
 import logging
 
 LOGGER = logging.getLogger(__name__)
 
 
-def get_validator(validator=DEFAULT_CARD_NUMBER_VALIDATOR):
+def get_validator(validator=DefaultConstants.DEFAULT_CARD_NUMBER_VALIDATOR):
     try:
         validation_method = validator.lower()
         validation_method = validation_utils.parse_input(validation_method)
@@ -18,5 +18,5 @@ def get_validator(validator=DEFAULT_CARD_NUMBER_VALIDATOR):
             LOGGER.error(exception_message)
             raise Exception(exception_message)
     except Exception as e:
-        LOGGER.info("Loading default validation algorithm: {0}".format(DEFAULT_CARD_NUMBER_VALIDATOR))
+        LOGGER.info("Loading default validation algorithm: {0}".format(DefaultConstants.DEFAULT_CARD_NUMBER_VALIDATOR))
         return LuhnValidator()

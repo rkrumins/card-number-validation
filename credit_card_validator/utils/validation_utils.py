@@ -1,4 +1,6 @@
 import logging
+
+from credit_card_validator.constants import DefaultConstants
 from credit_card_validator.exceptions import InvalidInputValueException, EmptyInputValueException
 import regex as re
 re.DEFAULT_VERSION = re.VERSION1
@@ -41,7 +43,7 @@ def parse_input(input_string) -> str:
 
 
 # Not in use at the moment but could be helpful when returning the output to user
-def mask_credit_card_digits(full_credit_card_number, unmasked_digits_count=2, mask_character="*"):
+def mask_credit_card_digits(full_credit_card_number, unmasked_digits_count=DefaultConstants.DEFAULT_UNMASKED_DIGITS_COUNT, mask_character=DefaultConstants.DEFAULT_MASK_CHARACTER):
     full_credit_card_number_clean = ''.join(i for i in str(full_credit_card_number) if i.isdigit())
 
     full_credit_card_number_length = len(full_credit_card_number_clean)
